@@ -16,7 +16,6 @@ phases:
       - ls
       - cd tweetauthenticationservice
       - ls
-      - cd tweet-authenticationservice
       - mvn compile
       - mvn package
       - echo " building docker image"
