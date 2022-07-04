@@ -19,7 +19,7 @@ phases:
       - mvn compile
       - mvn package -DskipTests
       - echo " building docker image"
-      - docker build -t tweet-ui-service-ecr .
+      - docker build -t tweetuirepo
       - docker tag tweetuirepo:latest 330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest
   post_build:
     commands:
