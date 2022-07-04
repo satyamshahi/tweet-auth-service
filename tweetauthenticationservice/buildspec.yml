@@ -17,7 +17,7 @@ phases:
       - cd tweetauthenticationservice
       - ls
       - mvn compile
-      - mvn package
+      - mvn package -DskipTests
       - echo " building docker image"
       - docker build -t tweet-ui-service-ecr .
       - docker tag tweetuirepo:latest 330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest
