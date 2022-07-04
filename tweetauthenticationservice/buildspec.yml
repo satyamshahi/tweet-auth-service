@@ -14,7 +14,9 @@ phases:
       - echo "Entered build phase"
       - echo "Building Java"
       - ls
-      - cd tweet-auth-service/tweetauthenticationservice/tweet-authenticationservice
+      - cd tweetauthenticationservice
+      - ls
+      - cd tweet-authenticationservice
       - mvn compile
       - mvn package
       - echo " building docker image"
