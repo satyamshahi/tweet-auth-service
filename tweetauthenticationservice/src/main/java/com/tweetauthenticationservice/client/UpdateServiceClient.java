@@ -12,7 +12,7 @@ import com.tweetauthenticationservice.payload.ForgotPasswordRequest;
 import com.tweetauthenticationservice.payload.LoginResponse;
 import com.tweetauthenticationservice.payload.RegisterationRequest;
 
-@FeignClient(value = "tweet-authentication-service", url = "http://localhost:6200")
+@FeignClient(value = "tweet-authentication-service", url = "http://15.207.99.206:6200")
 public interface UpdateServiceClient {
 
 	@GetMapping("{loginId}/login")
