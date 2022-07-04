@@ -13,6 +13,7 @@ phases:
     commands:
       - echo "Entered build phase"
       - echo "Building Java"
+      - ls
       - cd tweet-auth-service/tweetauthenticationservice/tweet-authenticationservice
       - mvn compile
       - mvn package
