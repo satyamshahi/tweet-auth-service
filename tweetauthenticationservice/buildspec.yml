@@ -1,0 +1,31 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+      docker: 19
+  pre_build:
+    commands:
+      - echo "Entered the pre-build phase"
+      - $(aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 330935856020.dkr.ecr.us-east-2.amazonaws.com)
+    
+  build:
+    commands:
+      - echo "Entered build phase"
+      - echo "Building Java"
+      - cd tweet-authenticationservice
+      - mvn compile
+      - mvn package
+      - echo " building docker image"
+      - docker build -t tweet-ui-service-ecr .
+      - docker tag tweetuirepo:latest 330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest
+  post_build:
+    commands:
+      - echo "Entered the post-build phase"
+      - echo "Pushing Docker Image"
+      - docker push 330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest
+      - echo writing deifinition file
+      - printf '[{"name":"tweetUiClusterUpdate ","imageUri":"%s"}]'330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest>taskdefination.json
+artifacts:
+  files:
+    - tweetuirepo/taskdefinition.json
