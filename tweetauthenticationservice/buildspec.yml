@@ -19,6 +19,8 @@ phases:
       - mvn compile
       - mvn package -DskipTests
       - echo " building docker image"
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - docker build -t tweetuirepo .
       - docker tag tweetuirepo:latest 330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest
   post_build:
