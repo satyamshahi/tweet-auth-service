@@ -27,7 +27,7 @@ phases:
       - echo "Pushing Docker Image"
       - docker push 330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest
       - echo writing deifinition file
-      - printf '[{"name":"tweetUiClusterUpdate ","imageUri":"%s"}]'330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest>taskdefination.json
+      - printf '[{"name":"authentication-container ","imageUri":"%s"}]'330935856020.dkr.ecr.us-east-2.amazonaws.com/tweetuirepo:latest>taskdefination.json
 artifacts:
   files:
     - tweetuirepo/taskdefinition.json
